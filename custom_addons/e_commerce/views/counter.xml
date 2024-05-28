@@ -1,0 +1,12 @@
+<!-- views/counter_template.xml -->
+<odoo>
+    <template id="e_commerce.Counter" name="e_commerce Counter">
+        <t t-name="e_commerce.Counter">
+            <div>
+                <p>Counter: <t t-esc="state.value"/></p>
+                <button class="btn btn-primary" t-on-click="increment">Increment</button>
+            </div>
+        </t>
+    </template>
+
+</odoo>

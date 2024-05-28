@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_e_commerce_customers,Customers,model_ecommerce_customer,base.group_user,1,1,1,1
+access_e_commerce_products,Products,model_ecommerce_product,base.group_user,1,1,1,1
+access_e_commerce_category,Category,model_ecommerce_category,base.group_user,1,1,1,1
+access_e_commerce_cart,Cart,model_ecommerce_cart,base.group_user,1,1,1,1
+access_e_commerce_cartline,CartLine,model_ecommerce_cartline,base.group_user,1,1,1,1
+access_e_commerce_order,Order,model_ecommerce_order,base.group_user,1,1,1,1
+access_e_commerce_orderline,OrderLine,model_ecommerce_orderline,base.group_user,1,1,1,1

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inventory Management Category and Group -->
+    <record id="category_inventory_management" model="ir.module.category">
+        <field name="name">Inventory Management</field>
+        <field name="description">Category for Inventory Management</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_inventory_manager" model="res.groups">
+        <field name="name">Inventory Manager</field>
+        <field name="category_id" ref="custom_inventory.category_inventory_management"/>
+    </record>
+
+    <!-- Store Manager Category and Group -->
+    <record id="category_store_manager" model="ir.module.category">
+        <field name="name">Store Manager</field>
+        <field name="description">Category for Store Manager</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_store_manager" model="res.groups">
+        <field name="name">Store Manager</field>
+        <field name="category_id" ref="custom_inventory.category_store_manager"/>
+    </record>
+</odoo>

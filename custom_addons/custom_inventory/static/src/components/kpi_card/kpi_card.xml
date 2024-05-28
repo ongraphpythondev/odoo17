@@ -1,0 +1,26 @@
+<templates>
+    <t t-name="custom_dashboard.KpiCard" owl="1">
+        <div class="col-lg-3 m-0 p-0">
+            <div class="shadow-sm border m-2 p-4 bg-white text-center" style="border-color: black">
+                <div class="h1 fw-bold text-dark" style="font-size: 48px;"><t t-esc="props.value"/></div>
+                <div class="h3 text-muted"><t t-esc="props.name"/></div>
+                <div class="h3 text-muted"><t t-if="props.percentage" t-esc="props.percentage"/></div>
+                <div class="h3 mt-5" t-if="props.percentage">
+                    <span t-attf-class="text-#{props.percentage > 0 ? 'success' : 'danger'}">
+                        <span t-attf-class="fa fa-arrow-#{props.percentage > 0 ? 'up' : 'down'} me-1"></span>
+                        <span t-esc="props.percentage"/>%
+                    </span>
+                    <!-- <span>since last period</span> -->
+                    <!-- Manually iterate over props to display its contents -->
+                    <span>Props:</span>
+                    <ul>
+                        <t t-foreach="Object.keys(props)" t-as="key" t-key="key">
+                            <li><t t-esc="key"/>: <t t-esc="props[key]"/></li>
+                               <span><t t-esc="props[key].name"/></span>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

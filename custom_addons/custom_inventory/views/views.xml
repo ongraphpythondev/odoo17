@@ -1,0 +1,209 @@
+<odoo>
+    <menuitem id="menu_custom_inventory" name="Custom Inventory" sequence="10"/>
+    <record id="view_inventory_entry_form" model="ir.ui.view">
+        <field name="name">inventory.entry.form</field>
+        <field name="model">custom_inventory.entry</field>
+        <field name="arch" type="xml">
+            <form string="Inventory Entry">
+                <sheet>
+                    <group>
+                        <field name="serial_number"/>
+                        <field name="date"/>
+                        <field name="supplier_id"/> 
+                        <field name="vehicle_number"/>
+                    </group> 
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_inventory_entry_tree" model="ir.ui.view">
+    <field name="name">inventory.entry.tree</field> 
+    <field name="model">custom_inventory.entry</field> 
+    <field name="arch" type="xml">
+        <tree string="Inventory Entry" >
+            <field name="serial_number"/>
+            <field name="date"/>
+            <field name="supplier_id"/> 
+            <field name="vehicle_number"/>
+        </tree>
+    </field>
+</record>
+<record id="order_inventory_entry" model="ir.sequence">
+    <field name="name">Inventory Entry Sequence</field>
+    <field name="code">custom_inventory.entry</field>
+    <field name="prefix">INV/</field>
+    <field name="padding">4</field>
+</record>
+
+    <record id="action_inventoryentry" model="ir.actions.act_window">
+        <field name="name">Inventory Form</field>
+        <field name="res_model">custom_inventory.entry</field> 
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_entry_form_action" name="Inventory_Form" parent="menu_custom_inventory" action="action_inventoryentry"/>
+
+
+
+
+
+
+    <record id="view_order_proforma_form" model="ir.ui.view">
+        <field name="name">order.proforma.form</field>
+        <field name="model">order.proforma</field>
+        <field name="arch" type="xml">
+            <form string="Order Proforma">
+                <sheet>
+                    <group>
+                        <field name="order_number"/>
+                        <field name="date"/>
+                        <field name="total_inventory" readonly="1"/>
+                        <field name="inventory_ids" widget="one2many_list">
+                            <tree>
+                                <field name="inventory_id"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- <record id="order_proforma_inventory_entry_tree" model="ir.ui.view">
+    <field name="name">order.proforma.tree</field> 
+    <field name="model">order.proforma</field> 
+    <field name="arch" type="xml">
+        <tree string="Order Proforma" >
+            <field name="order_number" widget="char"/>
+            <field name="date"/>
+            <field name="total_inventory" readonly="1"/>
+            <field name="inventory_ids" widget="one2many_list"/>
+        </tree>
+    </field>
+    </record> -->
+    <record id="sequence_order_proforma" model="ir.sequence">
+        <field name="name">Order Proforma Sequence</field>
+        <field name="code">order.proforma</field>
+        <field name="prefix">ORD/</field>
+        <field name="padding">4</field>
+    </record>
+    <record id="order_proforma_form_view" model="ir.ui.view">
+    <field name="name">order.proforma.form</field>
+    <field name="model">order.proforma</field>
+    <field name="arch" type="xml">
+        <form string="Order Proforma">
+            <sheet>
+                <group>
+                    <field name="order_number"/>
+                    <field name="date"/>
+                </group>
+                <group>
+                    <field name="inventory_ids"/>
+                </group>
+                <group>
+                    <field name="total_inventory"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="order_proforma_tree_view" model="ir.ui.view">
+    <field name="name">order.proforma.tree</field>
+    <field name="model">order.proforma</field>
+    <field name="arch" type="xml">
+        <tree string="Order Proforma">
+            <field name="order_number"/>
+            <field name="date"/>
+            <field name="total_inventory"/>
+        </tree>
+    </field>
+</record>
+
+<record id="action_order_proforma" model="ir.actions.act_window">
+    <field name="name">Order Proformas</field>
+    <field name="res_model">order.proforma</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+
+<record id="assigned_stock_tree_view" model="ir.ui.view">
+    <field name="name">assigned.stock.tree</field>
+    <field name="model">assigned.stock</field>
+    <field name="arch" type="xml">
+        <tree string="Assigned Stock">
+            <field name="order_proforma_id" string="Order Proforma"/>
+            <field name="inventory_id" string="Inventory"/>
+            <field name="quantity" string="Quantity"/>
+        </tree>
+    </field>
+</record>
+<record id="assigned_stock_form_view" model="ir.ui.view">
+    <field name="name">assigned.stock.form</field>
+    <field name="model">assigned.stock</field>
+    <field name="arch" type="xml">
+        <form string="Assigned Stock">
+            <group>
+            <field name="order_proforma_id" string="Order Proforma"/>
+            <field name="inventory_id" string="Inventory"/>
+            <field name="quantity" string="Quantity"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+
+<record id="action_assigned_stock" model="ir.actions.act_window">
+    <field name="name">Assigned Stock</field>
+    <field name="res_model">assigned.stock</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="assigned_stock_tree_view"/>
+</record>
+
+<record id="inbound_stock_tree_view" model="ir.ui.view">
+    <field name="name">inbound.stock.tree</field>
+    <field name="model">inbound.stock</field>
+    <field name="arch" type="xml">
+        <tree string="Inbound Stock">
+            <field name="inventory_id"/>
+            <field name="quantity"/>
+            <field name="date"/>
+            <field name="barcode"/>
+            <field name="tag"/>
+            <field name="comments"/>
+        </tree>
+    </field>
+</record>
+
+
+<record id="inbound_stock_form_view" model="ir.ui.view">
+    <field name="name">inbound.stock.form</field>
+    <field name="model">inbound.stock</field>
+    <field name="arch" type="xml">
+        <form string="Inbound Stock">
+            <group>
+                <field name="inventory_id"/>
+                <field name="quantity"/>
+                <field name="date"/>
+                <field name="barcode"/>
+                <field name="tag"/>
+                <field name="comments"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+<record id="action_inbound_stock" model="ir.actions.act_window">
+    <field name="name">Inbound Stock</field>
+    <field name="res_model">inbound.stock</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="inbound_stock_tree_view"/>
+</record>
+
+<menuitem id="menu_inbound_stock" name="Inbound Stock" parent="menu_order_proforma" action="action_inbound_stock"/>
+
+
+<menuitem id="menu_assigned_stock" name="Assigned Stock" parent="menu_order_proforma" action="action_assigned_stock"/>
+
+ <menuitem id="menu_order_proforma" name="Order Proforma" parent="menu_custom_inventory" action="action_order_proforma"/>
+
+</odoo>

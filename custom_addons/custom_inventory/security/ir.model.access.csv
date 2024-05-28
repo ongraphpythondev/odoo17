@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_inventory_inventoryentry,InventoryEntry,model_custom_inventory_entry,group_inventory_manager,1,1,1,1
+access_custom_inventory_orderproforma,OrderProforma,model_order_proforma,base.group_user,1,1,1,1
+access_custom_inventory_assignedstock,AssignedStock,model_assigned_stock,base.group_user,1,1,1,1
+access_custom_inventory_inboundstock,InboundStock,model_inbound_stock,base.group_user,1,1,1,1
+access_custom_inventory_stockdiscrepancy,StockDiscrepancy,model_stock_discrepancy,base.group_user,1,1,1,1
+access_custom_inventory_assignedinventory,AssignedInventory,model_assigned_inventory,base.group_user,1,1,1,1
+access_custom_inventory_faultinventory,FaultInventory,model_fault_inventory,base.group_user,1,1,1,1
+access_custom_inventory_faultinventory,FaultInventory,model_fault_inventory,base.group_user,1,1,1,1

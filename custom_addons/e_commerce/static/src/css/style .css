@@ -1,0 +1,14 @@
+.small-image {
+    max-width: 2%;
+    height: auto;
+}
+div.oe_center_custom {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    transform: translate(-50%, -50%);
+}
+
+div.oe_center_custom > sheet {
+    width: 50%; /* Adjust as needed */
+}

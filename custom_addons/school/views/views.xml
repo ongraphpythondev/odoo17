@@ -1,0 +1,92 @@
+<odoo>
+    <!-- Menu Items -->
+    <menuitem id="menu_school" name="School" sequence="10"/>
+    <menuitem id="menu_student" name="Student" parent="menu_school" sequence="20"/>
+    
+    <!-- Actions for School and Student Models -->
+    <record id="action_school" model="ir.actions.act_window">
+        <field name="name">Schools List</field>
+        <field name="res_model">school.name</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new school.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Students List</field>
+        <field name="res_model">student.name</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html"> 
+            <p class="oe_view_nocontent_create">
+                Click to add a new student.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menu Actions -->
+    <menuitem id="menu_school_action" name="Schools" parent="menu_school" action="action_school"/>
+    <menuitem id="menu_student_action" name="Students" parent="menu_student" action="action_student"/>
+    
+    <!-- Views for School Model -->
+    <record id="view_school_tree" model="ir.ui.view">
+        <field name="name">school.name.tree</field>
+        <field name="model">school.name</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="address"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_school_form" model="ir.ui.view">
+        <field name="name">school.name.form</field>
+        <field name="model">school.name</field>
+        <field name="arch" type="xml">
+            <form string="School">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="address"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Views for Student Model -->
+  <record id="view_student_tree" model="ir.ui.view">
+    <field name="name">student.name.tree</field>
+    <field name="model">student.name</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="address_student"/>
+            <field name="age"/>
+            <field name="roll_number"/>
+            <field name="school_id"/>
+        </tree>
+    </field>
+</record>
+
+<record id="view_student_form" model="ir.ui.view">
+    <field name="name">student.name.form</field>
+    <field name="model">student.name</field>
+    <field name="arch" type="xml">
+        <form string="Student">
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="address_student"/>
+                    <field name="age"/>
+                    <field name="roll_number"/>
+                    <field name="school_id"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+</odoo>

@@ -1,0 +1,8 @@
+<!-- <odoo>
+    <template id="assets_backend" name="store_man_dashboard_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/custom_inventory/static/src/components/store_man_dashboard/store_man_dashboard.js"></script>
+            <link rel="stylesheet" type="text/scss" href="/custom_inventory/static/src/components/store_man_dashboard/store_man_dashboard.css"/>
+        </xpath>
+    </template>
+</odoo> -->

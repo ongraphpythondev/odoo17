@@ -1,0 +1,64 @@
+<odoo>
+<menuitem id="menu_ecommerce" name="E-Commerce" />
+
+  <record id="act_products" model="ir.actions.act_window">
+        <field name="name">Products List</field>
+        <field name="res_model">ecommerce.product</field> 
+        <field name="view_mode">tree,form,search</field>
+        <!-- <field name="icon">fa-list</field> -->
+    </record>
+
+<record id="act_order" model="ir.actions.act_window">
+    <field name="name">Order</field>
+    <field name="res_model">ecommerce.order</field>
+    <field name="view_mode">graph</field>
+    <field name="view_id" ref="e_commerce.view_ecommerce_order_graph"/> 
+</record>
+
+<record id="act_user" model="ir.actions.act_window">
+    <field name="name">User</field>
+    <field name="res_model">ecommerce.customer</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="e_commerce.view_user_tree"/> 
+</record>
+
+
+<record id="view_dashboard_form" model="ir.ui.view">
+    <field name="name">Dashboard Form</field>
+    <field name="model">board.board</field>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+        <form string="Dashboard">
+        <board style="1-2">
+        <column>
+        <action
+        string="Order"
+        name="%(e_commerce.act_order)d"/>
+        <action
+        string="Products"
+        name="%(act_products)d"/>
+        </column>
+        <column>
+        <action
+        string="User"
+        name="%(e_commerce.act_user)d"/>
+        </column>
+        </board>
+        </form>
+    </field>
+</record>
+
+ <record id="action_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">board.board</field> 
+        <field name="view_mode">tree,form,search</field>
+        <field name="usage">menu</field> 
+        <field name="view_id" ref="view_dashboard_form"/> 
+    </record>
+
+
+
+
+<menuitem id="menu_dashboard_action" name="Dashboard" parent="menu_ecommerce" action="action_dashboard" sequence="1"/>
+
+</odoo>

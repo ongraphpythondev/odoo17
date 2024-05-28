@@ -1,0 +1,75 @@
+<odoo>
+    # <!-- Menu Items -->
+<menuitem id="menu_ecommerce" name="E-Commerce" sequence="10"/>
+<menuitem id="menu_products" name="Products" parent="menu_ecommerce" sequence="10"/>
+<menuitem id="menu_products_list" name="Products List" parent="menu_ecommerce" sequence="10"/>
+<menuitem id="menu_cart" name="Cart" parent="menu_ecommerce" sequence="10"/>
+<menuitem id="menu_user" name="User" parent="menu_ecommerce" sequence="10"/>
+<menuitem id="menu_order" name="Order" parent="menu_ecommerce" sequence="10"/>
+
+    <!-- <menuitem id="menu_category" name="Category" parent="menu_products" sequence="10"/> -->
+    
+    <!-- Menu Actions -->
+
+    <!-- Actions for Products and Category Models -->
+    <record id="action_products" model="ir.actions.act_window">
+        <field name="name">Products List</field>
+        <field name="res_model">ecommerce.product</field> 
+        <field name="view_mode">tree,form,search</field>
+        <!-- <field name="icon">fa-list</field> -->
+    </record>
+
+    <record id="action_category" model="ir.actions.act_window">
+        <field name="name">Category List</field>
+        <field name="res_model">ecommerce.category</field> 
+        <field name="view_mode">tree,form</field>
+    </record> 
+
+    <!-- for user -->
+    <record id="action_user" model="ir.actions.act_window">
+        <field name="name">User List</field>
+        <field name="res_model">ecommerce.customer</field> 
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!-- FOR CART TREE VIEW -->
+    <record id="action_ecommerce_cart_tree" model="ir.actions.act_window">
+            <field name="name">Ecommerce Cart</field>
+            <field name="res_model">ecommerce.cart</field>
+            <field name="view_mode">tree,form</field>
+    </record>
+
+    
+
+    <!-- for kanban -->
+    <record id="test_model_action" model="ir.actions.act_window">
+        <field name="name">Products Model</field>
+        <field name="res_model">ecommerce.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+<!-- for product form  -->
+<!-- <record id="action_product_form" model="ir.actions.act_window">
+    <field name="name">Product Form</field>
+    <field name="res_model">ecommerce.product</field>
+    <field name="view_mode">form</field>
+</record> -->
+
+
+<!-- For Order -->
+<record id="action_order" model="ir.actions.act_window">
+    <field name="name">Order</field>
+    <field name="res_model">ecommerce.order</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+
+    <menuitem id="menu_products_list_action" name="Products_List" parent="menu_products_list" action="action_products"/>
+    <menuitem id="menu_category_action" name="Category" parent="menu_products" action="action_category"/> 
+    <menuitem id="menu_products_action" name="Products" parent="menu_products" action="test_model_action"/>
+    <menuitem id="menu_action_user" name="User" parent="menu_user" action="action_user"/>
+    <menuitem id="submenu_ecommerce_cart_tree" name="Cart_list" parent="menu_cart" action="action_ecommerce_cart_tree"/>
+    <menuitem id="menu_order_view_action" name="Order" parent="menu_order" action="action_order"/>
+</odoo>
+
+

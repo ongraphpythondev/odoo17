@@ -1,0 +1,47 @@
+<!-- For order -->
+<odoo>
+        <record id="view_ecommerce_order_tree" model="ir.ui.view">
+            <field name="name">ecommerce.order.tree</field>
+            <field name="model">ecommerce.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="customer"/>
+                    <field name="status"/>
+                    <field name="total_amount"/>
+                    <field name="date"/>
+                    <field name="order_line"/>
+                </tree>
+            </field>
+        </record>
+    <record id="view_ecommerce_oder_form" model="ir.ui.view">
+        <field name="name">ecommerce.order.form</field>
+        <field name="model">ecommerce.order</field>
+        <field name="arch" type="xml">
+            <form string="Ecommerce Order">
+                    <group>          
+                             <field name="customer" string="Customer"/>
+                    </group>
+                    <field name="order_line">
+                        <tree>
+                            <field name="product"/>
+                            <field name="quantity"/>
+                            <field name="price"/>
+                        </tree>
+                    </field>
+            </form>
+        </field>
+    </record>
+
+   <record id="view_ecommerce_order_graph" model="ir.ui.view">
+    <field name="name">ecommerce.order.graph</field>
+    <field name="model">ecommerce.order</field>
+    <field name="arch" type="xml">
+        <graph string="Order Graph" type="pie">
+            <field name="status"/>
+            <field name="total_amount" type="measure"/>
+            <field name="date" widget="calendar"/>
+        </graph>
+    </field>
+</record>
+
+</odoo>

@@ -1,0 +1,7 @@
+<templates>
+    <t t-name="custom_inventory.ChartRenderer" owl="1">
+        <div class="chart-container">
+            <canvas t-att-data-type="props.type"></canvas>
+        </div>
+    </t>
+</templates>

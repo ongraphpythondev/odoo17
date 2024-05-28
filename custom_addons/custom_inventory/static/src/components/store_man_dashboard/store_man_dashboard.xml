@@ -1,0 +1,87 @@
+<templates xml:space="preserve">
+    <t t-name="custom_inventory.StoreManDashboard" owl="1">
+        <div class="vh-100 overflow-auto bg-blue">
+            <div class="row m-10">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h1 class="text-primary fw-bold">Store Manager Dashboard</h1>
+                                </div>
+                                <select class="form-select">
+                                    <option value="0">Select period</option>
+                                    <option value="7">Last 7 days</option>
+                                    <option value="30">Last 30 days</option>
+                                    <option value="60">Last 60 days</option>
+                                    <option value="90">Last 90 days</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <t t-foreach="state.inbound_stock" t-as="stock">
+                            <KpiCard name="'Inbound Stock'" value="stock.quantity" percentage="stock.percentage"/>
+                        </t>
+                        <t t-foreach="state.assigned_stock" t-as="stock">
+                            <KpiCard name="'Assigned Stock'" value="stock.quantity" percentage="stock.percentage"/>
+                        </t>
+                        <t t-foreach="state.proformas" t-as="proforma">
+                            <KpiCard name="'Proforma Orders'" value="proforma.total_inventory" percentage="proforma.percentage"/>
+                        </t>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">Monthly Sales</h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <ChartRenderer type="'bar'" title="'Monthly Sales Report'"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-0 p-0">
+                            <div class="shadow-sm border m-2 p-4 bg-white">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h3 class="text-primary fw-bold">Partner Orders</h3>
+                                    <div class="px-3 py-1 bg-primary cursor-pointer">
+                                        <span class="fa fa-arrow-right text-white"/>
+                                    </div>
+                                </div>
+                                <ChartRenderer type="'line'" title="'Partner Orders Report'"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="custom_inventory.KpiCard" owl="1">
+        <div class="col-lg-3 m-0 p-0">
+            <div class="shadow-sm border m-2 p-4 bg-white text-center">
+                <div class="h1 fw-bold text-dark" style="font-size: 48px;">
+                    <t t-esc="props.value"/>
+                </div>
+                <div class="h3 text-muted">
+                    <t t-esc="props.name"/>
+                </div>
+                <div class="h3 text-muted">
+                    <t t-if="props.percentage" t-esc="props.percentage"/>
+                </div>
+                <div class="h3 mt-5" t-if="props.percentage">
+                    <span t-attf-class="text-#{props.percentage > 0 ? 'success' : 'danger'}">
+                        <span t-attf-class="fa fa-arrow-#{props.percentage > 0 ? 'up' : 'down'} me-1"></span>
+                        <span t-esc="props.percentage"/>%
+                    </span>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

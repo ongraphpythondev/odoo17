@@ -1,0 +1,9 @@
+<!-- <odoo>
+    <data>
+        <template id="assets_backend" name="e_commerce assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/e_commerce/static/src/js/email_send.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo> -->

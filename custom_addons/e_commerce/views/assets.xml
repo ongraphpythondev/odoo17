@@ -1,0 +1,8 @@
+<!-- views/assets.xml
+<odoo>
+        <template id="assets_backend" name="e_commerce assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/e_commerce/static/src/js/counter.js"/>
+            </xpath>
+        </template>
+</odoo> -->
